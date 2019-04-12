@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Create from './Create';
+import Get from './Get';
+// import "./App.css"
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div className="container">
+          <div className="jumbotron">
+            <hr />
+            <h2 className="text text-info text-center">PRODUCT (using MERNSTACK)</h2>
+            <hr />
+            <ul>
+              <li><Link to={'/create'} >Create</Link></li>
+              <li><Link to={'/Get'} >List</Link></li>
+            </ul>
+
+            <Switch>
+              <Route exact path='/create' component={Create} />
+              <Route path='/Get' component={Get} />
+            </Switch>
+
+          </div>
+        </div>
+      </Router>
     );
   }
 }
